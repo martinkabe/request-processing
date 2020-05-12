@@ -16,6 +16,7 @@ import java.util.TreeSet;
 public class ProcessRequest {
 
     private HashMap<String, Integer> hashMap = new HashMap<>();
+    private static HttpURLConnection connection;
 
     public void getRequest() {
         String urlLink = "";
@@ -26,7 +27,7 @@ public class ProcessRequest {
             URL url = new URL (urlLink);
             String encoding = Base64.getEncoder().encodeToString((user + ":" + pwd).getBytes());
 
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
             connection.setRequestProperty  ("Authorization", "Basic " + encoding);
@@ -50,6 +51,9 @@ public class ProcessRequest {
             displayData(hashMap);
         } catch(Exception e) {
             e.printStackTrace();
+        }
+        finally {
+            connection.disconnect();
         }
     }
 
