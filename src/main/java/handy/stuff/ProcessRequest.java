@@ -29,6 +29,8 @@ public class ProcessRequest {
 
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
             connection.setDoOutput(true);
             connection.setRequestProperty  ("Authorization", "Basic " + encoding);
             InputStream content = (InputStream)connection.getInputStream();
