@@ -18,9 +18,9 @@ public class ProcessRequest {
     private HashMap<String, Integer> hashMap = new HashMap<>();
 
     public void getRequest() {
-        String urlLink = "https://voting-stats.herokuapp.com/api/v1.0/votes";
-        String user = "Martin";
-        String pwd = "nitram21459";
+        String urlLink = "";
+        String user = "";
+        String pwd = "";
 
         try {
             URL url = new URL (urlLink);
